@@ -12,7 +12,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)EntryPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)HomePage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AddPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExplorePage.cs" />

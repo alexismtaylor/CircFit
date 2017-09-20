@@ -5,7 +5,8 @@ namespace FitTemp.Models
 {
 	public class CircuitModel
 	{
-		List<ExerciseModel> circuit { get; set; }
+		public List<ExerciseModel> circuit { get; set; }
+        public string name { get; set; }
 	}
 }
 

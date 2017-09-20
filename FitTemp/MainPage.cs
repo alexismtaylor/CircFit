@@ -10,11 +10,6 @@ namespace FitTemp
         {
 			this.Title = "CircuitFitness";
 
-			this.Children.Add(new HomePage()
-			{
-				Title = "Home"
-			});
-
 			this.Children.Add(new ViewPage()
 			{
 				Title = "View Circuits"

@@ -8,6 +8,7 @@ namespace FitTemp
 	public class AddPage : ContentPage
     {
         ListView list = new ListView();
+        Entry circuitName;
 
 		public AddPage()
 		{
@@ -18,7 +19,7 @@ namespace FitTemp
 				Padding = 50,
 			};
 
-			var circuitName = new Entry()
+			circuitName = new Entry()
 			{
 				Placeholder = "Circuit Name",
 				TextColor = Color.Black,
@@ -54,6 +55,8 @@ namespace FitTemp
                 WidthRequest = 100
             };
 
+            subButton.Clicked += submitCircuit;
+
 
             addButton.Clicked += addExercise;
 
@@ -74,20 +77,12 @@ namespace FitTemp
 			addStack.Children.Add(addButton);
             addStack.Children.Add(subButton);
 
-			var scrollView = new ScrollView()
-			{
-
-			};
-
 			stack.Children.Add(circuitName);
 			stack.Children.Add(addStack);
-			//stack.Children.Add(scrollView);
 
 			Device.StartTimer(new TimeSpan(0, 0, 0, 15, 0), TimerElapsed);
 
 			this.BackgroundColor = Color.LightGray;
-			//scrollView.Content = stack;
-            //Content = scrollView;
             Content = stack;
 		}
 
@@ -112,5 +107,34 @@ namespace FitTemp
 		{
 			Navigation.PushModalAsync(new AddExercise());
 		}
+
+        private void submitCircuit(object sender, EventArgs e)
+        {
+            if (Application.Current.Properties.ContainsKey("tempExercises") && circuitName.Text != "")
+			{
+				var exerciseList = Application.Current.Properties["tempExercises"] as List<ExerciseModel>; //get exercises
+                CircuitModel circuit = new CircuitModel();
+                circuit.circuit = exerciseList;
+                circuit.name = circuitName.Text;
+
+                if(Application.Current.Properties.ContainsKey("circuits"))
+                {  
+                    var circuits = Application.Current.Properties["circuits"] as List<CircuitModel>;
+					Application.Current.Properties.Remove("circuits");
+                    circuits.Add(circuit);
+                    Application.Current.Properties["circuits"] = circuits;
+				}
+                else
+                {
+                    var circuitList = new List<CircuitModel>();
+                    circuitList.Add(circuit);
+                    Application.Current.Properties["circuits"] = circuitList;
+                }
+
+                list.ItemsSource = ""; //clear circuit 
+                circuitName.Text = ""; //clear circuit name
+                Application.Current.Properties.Remove("tempExercises"); //clear the temp circuit
+            }
+        }
 	}
 }
