@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>{22A6590B-9B9B-447E-80FB-8F2544481D9B}</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>FitTemp</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)EntryPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MainPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)HomePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AddPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExplorePage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ExerciseModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\CircuitModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AddExercise.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Models\" />
+  </ItemGroup>
+</Project>
