@@ -18,6 +18,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Models\ExerciseModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Models\CircuitModel.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)AddExercise.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CircuitPage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ExercisePage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Models\" />

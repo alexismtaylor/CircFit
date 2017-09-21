@@ -36,7 +36,7 @@ namespace FitTemp
 				timeIndex = timePicker.SelectedIndex;
 			};
 
-			timePicker.Items.Add("None");
+            timePicker.Items.Add("0");
 			for (int seconds = 15; seconds <= 180; seconds += 15)
 			{
 				if (seconds > 60)
@@ -69,9 +69,8 @@ namespace FitTemp
 				repIndex = repPicker.SelectedIndex;
 			};
 
-			repPicker.Items.Add("None");
 
-			for (int i = 1; i <= 30; i++)
+			for (int i = 0; i <= 30; i++)
 				repPicker.Items.Add(Convert.ToString(i));
 
 			setPicker = new Picker()
@@ -83,8 +82,7 @@ namespace FitTemp
 				setIndex = setPicker.SelectedIndex;
 			};
 
-			setPicker.Items.Add("None");
-			for (int i = 1; i <= 10; i++)
+			for (int i = 0; i <= 10; i++)
 				setPicker.Items.Add(Convert.ToString(i));
 
 
@@ -114,9 +112,9 @@ namespace FitTemp
 			if (exerciseName.Text != "" && timeIndex != -1 && setIndex != -1 && repIndex != -1)
 			{
 				exercise.name = exerciseName.Text;
-				exercise.reps = Convert.ToInt32(repPicker.Items[repIndex]);
-				exercise.time = timePicker.Items[timeIndex];
-				exercise.sets = Convert.ToInt32(setPicker.Items[setIndex]);
+				exercise.reps = Convert.ToInt32(repPicker.Items[repIndex]); //could be 0
+                exercise.time = timeIndex * 15; //the time in seconds (could be 0)
+				exercise.sets = Convert.ToInt32(setPicker.Items[setIndex]); //could be 0
 				if (Application.Current.Properties.ContainsKey("tempExercises"))
 				{
 					var exers = Application.Current.Properties["tempExercises"] as List<ExerciseModel>;

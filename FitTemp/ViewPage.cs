@@ -29,6 +29,32 @@ namespace FitTemp
                 list.ItemsSource = circuitNames;
 			}
 
+			list.ItemSelected += async (sender, e) =>
+			{
+				if (e.SelectedItem == null)
+				{
+					return;
+				}
+				else
+				{
+                    if (Application.Current.Properties.ContainsKey("circuits"))
+                    {
+                        var circuitList = Application.Current.Properties["circuits"] as List<CircuitModel>;
+
+                        foreach (var circuit in circuitList)
+                        {
+                            if(circuit.name.Equals(list.SelectedItem))
+                            {
+								var detailPage = new CircuitPage(circuit);
+								await Navigation.PushModalAsync(detailPage);
+
+							}
+                        }
+                        list.SelectedItem = null;
+                    }
+				}
+			};
+
 			var title = new Label();
 			title.Text = "Circuits";
 
